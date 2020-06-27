@@ -23,6 +23,7 @@ const styles = {
     width: "100%",
     display: "flex",
     justifyContent: "center",
+    marginTop: "10px",
   },
 };
 export default InputComponent;
