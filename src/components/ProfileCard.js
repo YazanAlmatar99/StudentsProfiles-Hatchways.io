@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Collapsible from "react-collapsible";
 const ProfileCard = ({ profile }) => {
   const [averageGrades, setAverageGrades] = useState(0);
 
@@ -26,6 +26,16 @@ const ProfileCard = ({ profile }) => {
         <h4 style={styles.desStyle}>Company: {profile.company}</h4>
         <h4 style={styles.desStyle}>Skill: {profile.skill}</h4>
         <h4 style={styles.desStyle}>Average: {averageGrades}%</h4>
+        <Collapsible trigger="+" triggerStyle={styles.trigger}>
+          {profile.grades.map((grade, index) => {
+            return (
+              <h5 style={{ opacity: "0.5" }} key={Math.random()}>
+                {`Test${index + 1}`}&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                {grade}
+              </h5>
+            );
+          })}
+        </Collapsible>
       </div>
     </div>
   );
@@ -50,6 +60,11 @@ let styles = {
   imageContainer: {
     display: "flex",
     alignItems: "center",
+  },
+  trigger: {
+    fontSize: "60px",
+    fontWeight: "bold",
+    opacity: "0.2",
   },
 };
 export default ProfileCard;
