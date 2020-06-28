@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Collapsible from "react-collapsible";
 const ProfileCard = ({ profile }) => {
   const [averageGrades, setAverageGrades] = useState(0);
-
   const calcAverage = () => {
     var grades = 0;
     profile.grades.map((grade) => {
@@ -10,6 +9,7 @@ const ProfileCard = ({ profile }) => {
     });
     setAverageGrades(grades / profile.grades.length);
   };
+
   useEffect(() => {
     calcAverage();
   }, []);
