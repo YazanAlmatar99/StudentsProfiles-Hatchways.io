@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-const InputComponent = ({ handleChange }) => {
+const InputComponent = ({ handleChange, placeHolder }) => {
   return (
     <div style={styles.container}>
       <input
         style={styles.input}
-        placeholder="Search by name"
+        placeholder={placeHolder}
         onChange={handleChange}
       />
     </div>
