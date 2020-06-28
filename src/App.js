@@ -10,19 +10,22 @@ class App extends React.Component {
     renderedProfiles: [],
     profilesToShow: [],
     nameTerm: "",
+    tagTerm: "",
   };
   componentWillMount() {
     this.handleData();
   }
-  handleChange = async (e) => {
+  handleNameChange = async (e) => {
     await this.setState({ nameTerm: e.target.value });
-    console.log(this.state.nameTerm.length, "name term");
     const profilesToShow = this.state.renderedProfiles.filter((profile) => {
       return profile.props.profile.firstName
         .toLowerCase()
         .includes(this.state.nameTerm);
     });
     this.setState({ profilesToShow: profilesToShow });
+  };
+  handleTagChange = async (e) => {
+    await this.setState({ tagTerm: e.target.value });
   };
   mapArr = () => {
     const mappedArr = this.state.profiles.map((profile) => {
@@ -41,7 +44,11 @@ class App extends React.Component {
     if (this.state.profiles) {
       return (
         <div>
-          <InputComponent handleChange={this.handleChange} />
+          <InputComponent
+            handleChange={this.handleNameChange}
+            placeHolder="Search by name"
+          />
+
           {this.state.profilesToShow.length
             ? this.state.profilesToShow
             : this.state.renderedProfiles}
